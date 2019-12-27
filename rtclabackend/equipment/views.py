@@ -1,11 +1,13 @@
 from django.shortcuts import render
-from .models import Equipments
+from .models import Equipment
+from .forms import EquipmentForm
 
 # Create your views here.
 
 
 def equipments(request):
     context = {
-        'equipments': Equipments.objects.all(),
+        'form': EquipmentForm,
+        'equipments': Equipment.objects.all(),
     }
-    return render(request, 'equipments/equipments.html', context)
+    return render(request, 'equipment/equipments.html', context)

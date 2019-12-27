@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'equipment',
+    'crispy_forms',
+    "bootstrap4",
+    'bootstrap_datepicker_plus',
+
 ]
 
 MIDDLEWARE = [
@@ -69,6 +75,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'rtclabackend.wsgi.application'
 
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -118,3 +127,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# USER Data
+username = 'lagus'
+password = 'Parelman2'

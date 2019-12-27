@@ -1,0 +1,80 @@
+{% extends 'equipment/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Equimpment | RTC LAB INFOBASE
+{% endblock title %}
+
+
+{% block heading %}
+<h1 class="text-white container">Equimpment | RTC LAB INFOBASE</h1>
+{% endblock heading %}
+
+
+{% block body %}
+<div class="container-fluid pt-4 pb-2">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Lab Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Model</th>
+                <th scope="col">Marker</th>
+                <th scope="col">Supplied on</th>
+                <th scope="col">Location in Lab</th>
+                <th scope="col">Serviced on</th>
+                <th scope="col">Next Service</th>
+                <th scope="col">Caliberated on</th>
+                <th scope="col">Next Caliberation</th>
+                <th scope="col">Serviced by</th>
+                <th scope="col">Price($)</th>
+                <th scope="col">Caliberated by</th>
+                <th scope="col">In use by</th>
+                <th scope="col">Project</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for equipment in equipments %}
+            <tr>
+                <th scope="row">{{equipment.id}}</th>
+                <td>{{equipment.lab_id}}</td>
+                <td>{{equipment.name}}</td>
+                <td>{{equipment.model}}</td>
+                <td>{{equipment.marker}}</td>
+                <td>{{equipment.data_supplied}}</td>
+                <td>{{equipment.location_in_lab}}</td>
+                <td>{{equipment.date_serviced}}</td>
+                <td>{{equipment.next_service_date}}</td>
+                <td>{{equipment.date_caliberated}}</td>
+                <td>{{equipment.next_caliberation_date}}</td>
+                <td>{{equipment.company_that_serviced}}</td>
+                <td>{{equipment.price}}</td>
+                <td>{{equipment.company_that_caliberated}}</td>
+                <td>{{equipment.using_personel}}</td>
+                <td>{{equipment.project}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+    <div class="container">
+        <h3 class="pt-2 pb-4">Creating a new Equimpment Record</h3>
+        <form method="POST">
+            <div class="form-group col-md-6 mb-0">
+                {% csrf_token %}
+                {{ form|crispy  }}
+                {% if edit_item %}
+                <input type="submit" value="Sava">
+                {% else %}
+                <input type="submit" value="Create">
+                {% endif %}
+            </div>
+        </form>
+    </div>
+
+</div>
+
+{% endblock body %}
