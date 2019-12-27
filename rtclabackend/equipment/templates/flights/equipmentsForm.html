@@ -1,0 +1,47 @@
+{% extends 'flights/base.html' %}
+
+{% block title %}EQUIMPMENTS | RTC LAB DATABASE {% endblock title %}
+
+{% block heading %}
+<h1 class="text-white">There are #{{ total_flight }} flights available</h1>
+{% endblock heading %} {% block body %}
+
+<div class="container pt-4 pb-5">
+  <hr />
+  <h3>Create Passenger</h3>
+  {% csrf_token %}
+  <form action="" method="POST">
+    <div class="form-group">
+      {{ passenger_form }}
+      <button type="submit" class="btn btn-primary">Create Passenger</button>
+    </div>
+  </form>
+</div>
+
+<div class="container pt-4 pb-2">
+  <h3>Create Airport</h3>
+  <hr />
+  {% csrf_token %}
+  <form form action="" method="POST">
+    <div class="form-group">
+      {{ airport_form }}
+      <button type="submit" class="btn btn-primary">Create Airport</button>
+    </div>
+  </form>
+</div>
+
+<div class="container pt-4 pb-2">
+  <h3>Create Flights</h3>
+  <hr />
+
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      {{ flight_form }}
+      <button type="submit" class="btn btn-primary">Create Flight</button>
+    </div>
+  </form>
+</div>
+
+
+{% endblock body %}

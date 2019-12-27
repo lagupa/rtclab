@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+    {% block title %} {% endblock %}
+  </title>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+</head>
+
+<body>
+  <div class="container pt-4 pb-2">
+    <ul class="nav justify-content-end ">
+      <li class="nav-item">
+        <h3>Admin, Dr. Patrick</h3>
+      </li>
+      <br />
+      <li class="nav-item ml-4 ">
+        <p>
+          <!-- <a class="btn btn-primary" href="{% url 'logout'  %}">Logout</a> -->
+          <a class="btn btn-primary" href="#">Logout</a>
+        </p>
+      </li>
+    </ul>
+    <div class="create-box">
+      <!-- <a href="{% url 'airports'  %}">Create Passenger</a> -->
+      <a href="#">Create Passenger</a>
+    </div>
+    <hr />
+  </div>
+
+  <div class="container-fluid ">
+    <div class="container pt-3 pb-3 bg-success">
+      <h1>
+        {% block heading %} {% endblock heading %}
+      </h1>
+    </div>
+  </div>
+
+  {% block body %} {% endblock %}
+</body>
+
+</html>

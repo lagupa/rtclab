@@ -1,0 +1,25 @@
+{% extends 'flights/base.html' %}
+
+{% block title %}
+Equimpment | RTC LAB INFOBASE
+{% endblock title %}
+
+
+{% block heading %}
+<h1 class="text-white">There are #{{ total_flight }} flights available</h1>
+{% endblock heading %}
+
+
+{% block body %}
+<div class="container pt-4 pb-2">
+    <hr>
+
+    {% for flight in flights %}
+    <a href="{% url 'flight' flight.id %}">
+        <h4> {{ flight }}</h4>
+    </a>
+    {% endfor %}
+
+</div>
+
+{% endblock body %}
