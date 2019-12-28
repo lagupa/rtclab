@@ -104,5 +104,10 @@ class EquipmentForm(forms.ModelForm):
             'date_serviced': DateTimePickerInput(),
             'next_service_date': DateTimePickerInput(),
             'date_caliberated': DateTimePickerInput(),
-            'next_caliberation_date': DateTimePickerInput()
+            'next_caliberation_date': DateTimePickerInput(),
+            'project': forms.TextInput(
+                attrs={
+                    "class": "form-control"
+                }
+            )
         }

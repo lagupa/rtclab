@@ -13,6 +13,19 @@ Equimpment | RTC LAB INFOBASE
 
 {% block body %}
 <div class="container-fluid pt-4 pb-2">
+    <div class="container">
+        <a class='btn btn-dark' href="{% url 'create_new_equipment' %}">Create New Equipment Record</a>
+        <a class='btn btn-dark' href="#">Download XLSC</a>
+    </div>
+    <br>
+
+    {% if equipments %}
+    <div>
+        <h3>List of equipment</h3>
+        <p>Click the name of each equimpment under the name column to edit, delete it from the record</p>
+    </div>
+
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -40,7 +53,7 @@ Equimpment | RTC LAB INFOBASE
             <tr>
                 <th scope="row">{{equipment.id}}</th>
                 <td>{{equipment.lab_id}}</td>
-                <td>{{equipment.name}}</td>
+                <th><a href="{% url 'edit_equipment' equipment.id %}"> {{equipment.name}} </a></th>
                 <td>{{equipment.model}}</td>
                 <td>{{equipment.marker}}</td>
                 <td>{{equipment.data_supplied}}</td>
@@ -57,24 +70,24 @@ Equimpment | RTC LAB INFOBASE
             </tr>
             {% endfor %}
         </tbody>
-
     </table>
 
+    {% else %}
+
     <div class="container">
-        <h3 class="pt-2 pb-4">Creating a new Equimpment Record</h3>
-        <form method="POST">
-            <div class="form-group col-md-6 mb-0">
-                {% csrf_token %}
-                {{ form|crispy  }}
-                {% if edit_item %}
-                <input type="submit" value="Sava">
-                {% else %}
-                <input type="submit" value="Create">
-                {% endif %}
-            </div>
-        </form>
+        <br>
+        <h3>No Equipment Records</h3>
+        <hr>
+        <h5>
+            Please click the "create new equipment record" button to create
+            a
+            record
+        </h5>
     </div>
 
+
+
+    {% endif %}
 </div>
 
 {% endblock body %}
