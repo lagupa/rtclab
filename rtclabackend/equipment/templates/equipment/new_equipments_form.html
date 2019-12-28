@@ -138,9 +138,13 @@
 
         // get the last item in uls
         var id = uls[uls.length - 1]
+        console.log(lik.replace('edit', 'delete'))
         console.log(id)
 
-        var link = (`http://127.0.0.1:8800/equipments/edit/${id}`).replace('edit', 'delete')
+        var link = (`http://127.0.0.1:8802/equipments/edit/${id}`).replace('edit', 'delete')
+
+        // var link = lik.replace('edit', 'delete')
+        console.log(link)
 
         var content = "<div class='dialog-ovelay'>" +
             "<div class='dialog'><header>" +
@@ -161,8 +165,12 @@
 
         $('body').prepend(content);
 
-        document.querySelector('.doAction').addEventListener('click', function () {
-            window.open(link);
+        document.querySelector('.doAction').addEventListener('click', function (e) {
+            e.preventDefault()
+
+            // window.open(link)
+            window.location.replace(link)
+
             $(this).parents('.dialog-ovelay').fadeOut(500, function () {
                 console.log('deleting')
                 $(this).remove();
@@ -226,10 +234,11 @@ Equimpment | RTC LAB INFOBASE
             </a>
 
             <!-- Delete using JS -->
-            <button id='popop' class='btn button-default link btn-danger'>
-                Delete this Record
-            </button>
-
+            <a href="{% url 'equipment' %}">
+                <button id='popop' class='btn button-default link btn-danger'>
+                    Delete this Record
+                </button>
+            </a>
             <!-- To delete using django, remove the js and css above-->
 
             <!-- <a id='popop' type="submit" class='btn button-default link btn-danger'

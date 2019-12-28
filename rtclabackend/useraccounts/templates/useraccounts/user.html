@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Login
+{% endblock title %}
+
+
+
+{% block body %}
+<div class="container-fluid pt-5 pb-5 bg-success">
+    <div class="container">
+        <h1> Hello, {{ user.username }}
+        </h1>
+        <p>Currently login as: {{ user.username }} </p>
+        <p><a class="btn btn-primary" href="{% url 'logout' %}">logout</a></p>
+    </div>
+</div>
+
+{% endblock body %}

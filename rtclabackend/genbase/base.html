@@ -3,6 +3,8 @@
 {% bootstrap_javascript jquery='full' %}
 {{ form.media }}
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,28 +21,6 @@
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-  <script>
-    window.addEventListener('load', (event) => {
-      var time = new Date()
-      let hour = time.getHours()
-
-      if (hour >= 6 && hour < 12) {
-        document.querySelector('#greeting').innerHTML = 'Good morning,'
-        console.log('Good morning,')
-
-      } else if (hour > +12 && hour < 18) {
-        greet.innerHTML = 'Good Afternoon,'
-        console.log('Good Afternoon')
-
-      } else {
-        greet.innerHTML = 'Good evening,'
-        console.log('Good Evening')
-      }
-
-    })
-
-
-  </script>
 </head>
 
 <body>
@@ -48,15 +28,14 @@
   <div class="container pt-4 pb-2">
     <ul class="nav justify-content-end ">
       <li class="nav-item">
-
         {% if user.username %}
-        <h3> <span id='greeting'>Hello,</span> {{ user.username }}</h3>
+        <h3> Hello, {{ user.username }}</h3>
         {% else %}
         <h2>Hello Visitor </h2>
+        <p>You're not logged in</p>
         {% endif %}
-
-      </li> <br>
-      <li class="nav-item ml-4 ">
+      </li>
+      <li class="nav-item ml-4">
         {% if user.username %}
         <p><a class="btn btn-primary" href="{% url 'logout' %}">Log out</a></p>
         {% endif %}
@@ -64,12 +43,11 @@
     </ul>
     <div class="create-box">
       {% block navigation %}
-
+      <h1>RTC Lab Infobase | Equipment</h1>
       {% endblock navigation %}
     </div>
-    <hr>
   </div>
-
+  <hr>
   <div class="container-fluid bg-primary ">
     <div class="pt-3 pb-3">
       <h1>

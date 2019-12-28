@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from .models import Equipment
 from .forms import EquipmentForm
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
-
+@login_required(login_url='/')
 def equipment(request):
     context = {
         'equipments': Equipment.objects.all(),
@@ -12,6 +14,7 @@ def equipment(request):
     return render(request, 'equipment/equipments.html', context)
 
 
+@login_required(login_url='/')
 def create_new_equipment(request):
     form = EquipmentForm(request.POST or None)
     if request.POST:
@@ -24,6 +27,7 @@ def create_new_equipment(request):
     return render(request, 'equipment/new_equipments_form.html', context)
 
 
+@login_required(login_url='/')
 def edit_equipment(request, id):
     equip_db = Equipment.objects.get(id=id)
     print(equip_db)
@@ -40,6 +44,7 @@ def edit_equipment(request, id):
     return render(request, 'equipment/new_equipments_form.html', context)
 
 
+@login_required(login_url='/')
 def delete_equipment(request, id):
     print(request.POST)
     deleted = Equipment.objects.get(id=id)

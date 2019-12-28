@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Login
+{% endblock title %}
+
+
+
+{% block heading %}
+{% if message %}
+<div class="container text-white pt-3 pb-3">
+    <h2>{{ message|safe|escape  }}</h2>
+</div>
+{% else %}
+<h1 class='container text-white'>Woopsy!</h1>
+<h4 class='container text-white'>RTC Laboratory account authentication is required!</h4>
+{% endif %}
+{% endblock heading %}
+
+
+{% block body %}
+
+<div class=" pt-5 pb-5 container">
+    <h4>Login to access RTC Laboratory Resource </h4>
+    <form action="{% url 'login' %} " method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username">User Name</label>
+            <input type="text" class="form-control" name="username" placeholder=" User Name">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="password">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+
+    <br><br> <br> <br>
+    <h4>Don't have an account yet?</h4> <br>
+    <h5><a class="btn btn-primary" href="{% url 'register' %}">
+            <h6>Create</h6>
+        </a>
+        a new one here
+    </h5>
+
+</div>
+
+
+{% endblock body %}

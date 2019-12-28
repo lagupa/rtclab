@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Login
+{% endblock title %}
+
+
+
+{% block heading %}
+{% if message %}
+<div class="container text-white pt-3 pb-2">
+    <h3>{{ message|safe|escape  }}</h3>
+    <p>Registering for RTC Laboratory account grants you access to our vast database reources</p>
+</div>
+{% else %}
+<h2 class='container text-white'>Register with us for an account! </h2>
+{% endif %}
+{% endblock heading %}
+
+
+{% block body %}
+
+<div class=" pt-5 pb-5 container">
+    <h4>Please fill in the following fields to register a new RTC Lab user account </h4>
+    <form action="{% url 'register' %} " method="POST">
+        {% csrf_token %}
+        <!-- UserName -->
+        <div class="form-group">
+            <label for="username">User Name</label>
+            <input type="text" class="form-control" name="username" placeholder=" User Name" required>
+        </div>
+        <!-- First Name -->
+        <div class="form-group">
+            <label for="first_name">First Name</label>
+            <input type="text" class="form-control" name="first_name" placeholder="Your First Name" required>
+        </div>
+        <!-- Last Name -->
+        <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input type="text" class="form-control" name="last_name" placeholder="Your Last Name" required>
+        </div>
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" placeholder="Enter a valid email" required>
+        </div>
+        <!-- Password1 -->
+        <div class="form-group">
+            <label for="password1">Password</label>
+            <input type="password" class="form-control" name="password1" placeholder="password">
+        </div>
+        <!-- Password2 -->
+        <div class="form-group">
+            <label for="password2">Password Confirmation</label>
+            <input type="password" class="form-control" name="password2" placeholder="Confirm your password">
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+
+    <br><br> <br> <br>
+    <h4>Already have an account?</h4> <br>
+    <h5> <a class="btn btn-primary" href="{% url 'user' %}">
+            <h6>Login</h6>
+        </a> instead</h5>
+
+</div>
+
+
+{% endblock body %}
