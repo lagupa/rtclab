@@ -3,16 +3,10 @@
 {% bootstrap_javascript jquery='full' %}
 {{ form.media }}
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
-
-
-
   <title>
     {% block title %} {% endblock %}
   </title>
@@ -28,26 +22,30 @@
 </head>
 
 <body>
+
   <div class="container pt-4 pb-2">
     <ul class="nav justify-content-end ">
       <li class="nav-item">
-        <h3>Admin, Dr. Patrick</h3>
-      </li>
-      <br />
+
+        {% if user.username %}
+        <h3> Hello, {{ user.username }}</h3>
+        {% else %}
+        <h2>Hello Visitor </h2>
+        {% endif %}
+
+      </li> <br>
       <li class="nav-item ml-4 ">
-        <p>
-          logout
-        </p>
+        {% if user.username %}
+        <p><a class="btn btn-primary" href="{% url 'logout' %}">Log out</a></p>
+        {% endif %}
       </li>
     </ul>
-
     <div class="create-box">
       {% block navigation %}
 
       {% endblock navigation %}
     </div>
-
-    <hr />
+    <hr>
   </div>
 
   <div class="container-fluid bg-primary ">

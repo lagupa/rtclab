@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     "bootstrap4",
     'bootstrap_datepicker_plus',
+    'useraccounts',
 
 ]
 
@@ -60,7 +61,7 @@ ROOT_URLCONF = 'rtclabackend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [(os.path.join(BASE_DIR, 'genbase')), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
