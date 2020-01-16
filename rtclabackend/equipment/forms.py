@@ -100,7 +100,7 @@ class EquipmentForm(forms.ModelForm):
         model = Equipment
         fields = '__all__'
         widgets = {
-            'data_supplied': DateTimePickerInput(),
+            'date_supplied': DateTimePickerInput(),
             'date_serviced': DateTimePickerInput(),
             'next_service_date': DateTimePickerInput(),
             'date_caliberated': DateTimePickerInput(),

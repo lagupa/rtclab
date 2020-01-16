@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import Equipment
 from .forms import EquipmentForm
 from django.contrib.auth.decorators import login_required
@@ -19,7 +20,11 @@ def create_new_equipment(request):
     form = EquipmentForm(request.POST or None)
     if request.POST:
         if form.is_valid():
-            form.save()
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            print(user)
+            messages.success(request, 'Successfully saved...')
             return redirect('equipment')
     context = {
         'form': EquipmentForm,
