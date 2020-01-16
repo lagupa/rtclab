@@ -8,6 +8,14 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 @login_required(login_url='/')
+def index(request):
+    context = {
+        'equipments': Equipment.objects.all(),
+    }
+    return render(request, 'useraccounts/user.html', context)
+
+
+@login_required(login_url='/')
 def equipment(request):
     context = {
         'equipments': Equipment.objects.all(),

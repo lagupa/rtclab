@@ -24,7 +24,7 @@ def login_view(request):
 
     if user is not None:
         login(request, user)
-        return redirect('equipment')
+        return render(request, "useraccounts/user.html", {"message": None})
     else:
         return render(request, "useraccounts/login.html", {"message": 'Invalid Credentials'})
 
