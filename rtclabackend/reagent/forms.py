@@ -1,9 +1,9 @@
 from django import forms
-from .models import Equipment
+from .models import Reagent
 from bootstrap_datepicker_plus import DateTimePickerInput
 
 
-class EquipmentForm(forms.ModelForm):
+class ReagentForm(forms.ModelForm):
     lab_id = forms.CharField(
         label='Lab Id',
         max_length=50,
@@ -22,19 +22,40 @@ class EquipmentForm(forms.ModelForm):
             }
         )
     )
-    model = forms.CharField(
-        label='Model',
+
+    # NumberInput
+    CAT_number = forms.CharField(
+        label='CAT Number',
         max_length=20,
-        widget=forms.TextInput(
+        widget=forms.NumberInput(
             attrs={
+                "min": "0",
+                "class": "form-control"
+            }
+        )
+    )
+    quantity = forms.CharField(
+        label='Quantity',
+        max_length=20,
+        widget=forms.NumberInput(
+            attrs={
+                "min": "0",
                 "class": "form-control"
             }
         )
     )
     marker = forms.CharField(
         label='Marker',
-        max_length=20,
+        max_length=30,
         widget=forms.TextInput(
+            attrs={
+                "class": "form-control"
+            }
+        )
+    )
+    storage_requirement = forms.CharField(
+        label='Storage Requirements',
+        widget=forms.Textarea(
             attrs={
                 "class": "form-control"
             }
@@ -51,7 +72,7 @@ class EquipmentForm(forms.ModelForm):
         )
     )
 
-    using_personel = forms.CharField(
+    ordered_by = forms.CharField(
         label='In use by',
         max_length=20,
         widget=forms.TextInput(
@@ -60,51 +81,23 @@ class EquipmentForm(forms.ModelForm):
             }
         )
     )
-    company_that_caliberated = forms.CharField(
+    project_code = forms.CharField(
         label='Company that caliberated',
-        max_length=20,
+        max_length=130,
         widget=forms.TextInput(
             attrs={
-                "class": "form-control"
-            }
-        )
-    )
-    company_that_serviced = forms.CharField(
-        label='Company the Service',
-        max_length=20,
-        widget=forms.TextInput(
-            attrs={
-                "class": "form-control"
-            }
-        )
-    )
-    project = forms.CharField(
-        label='Project',
-        max_length=20,
-        widget=forms.TextInput(
-            attrs={
-                "class": "form-control"
-            }
-        )
-    )
-    price = forms.CharField(
-        label='price',
-        max_length=20,
-        widget=forms.NumberInput(
-            attrs={
-                "min": "0",
                 "class": "form-control"
             }
         )
     )
 
     class Meta:
-        model = Equipment
+        model = Reagent
         fields = '__all__'
         widgets = {
             'date_supplied': DateTimePickerInput(),
-            'date_serviced': DateTimePickerInput(),
-            'next_service_date': DateTimePickerInput(),
+            'manufacturer_date': DateTimePickerInput(),
+            'expiry_date': DateTimePickerInput(),
             'date_caliberated': DateTimePickerInput(),
             'next_caliberation_date': DateTimePickerInput(),
             'project': forms.TextInput(

@@ -5,6 +5,11 @@
 Equimpment | RTC LAB INFOBASE
 {% endblock title %}
 
+{% block navigation %}
+<a href="{% url 'user' %}">
+    <h5>Select Databases</h5>
+</a>
+{% endblock navigation %}
 
 {% block heading %}
 <h1 class="text-white container">Equimpment | RTC LAB INFOBASE</h1>
@@ -42,7 +47,6 @@ Equimpment | RTC LAB INFOBASE
                 <th scope="col">Next Caliberation</th>
                 <th scope="col">Serviced by</th>
                 <th scope="col">Entry by</th>
-                <th scope="col">Price</th>
                 <th scope="col">Caliberated by</th>
                 <th scope="col">In use by</th>
                 <th scope="col">Project</th>
@@ -64,8 +68,7 @@ Equimpment | RTC LAB INFOBASE
                 <td>{{equipment.date_caliberated}}</td>
                 <td>{{equipment.next_caliberation_date}}</td>
                 <td>{{equipment.company_that_serviced}}</td>
-                <td>{{equipment.data_entry_by}}</td>
-                <td>${{equipment.price}}</td>
+                <td>{{ user.username }}</td>
                 <td>{{equipment.company_that_caliberated}}</td>
                 <td>{{equipment.using_personel}}</td>
                 <td>{{equipment.project}}</td>

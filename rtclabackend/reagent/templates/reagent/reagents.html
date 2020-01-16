@@ -1,0 +1,99 @@
+{% extends 'reagent/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Reagents | RTC LAB INFOBASE
+{% endblock title %}
+
+{% block navigation %}
+<a href="{% url 'user' %}">
+    <h5>Select Databases</h5>
+</a>
+{% endblock navigation %}
+
+
+{% block heading %}
+<h1 class="text-white container">Reagents | RTC LAB INFOBASE</h1>
+{% endblock heading %}
+
+
+{% block body %}
+<div class="container-fluid pt-4 pb-2">
+    <div class="container">
+        <a class='btn btn-dark' href="{% url 'create_new_reagent' %}">Create New Reagent Record</a>
+        <a class='btn btn-dark' href="#">Download XLSC</a>
+    </div>
+    <br>
+
+    {% if reagents %}
+    <div>
+        <h3>List of reagent</h3>
+        <p>Click the name of each reagent under the name column to edit, delete it from the record</p>
+    </div>
+
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Lab Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Cat Number</th>
+                <th scope="col">Batch Number</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Marker</th>
+                <th scope="col">Country</th>
+                <th scope="col">Date Supplied</th>
+                <th scope="col">Manufactured date</th>
+                <th scope="col">Expiry date</th>
+                <th scope="col">Storage Equipment</th>
+                <th scope="col">Location in Lab</th>
+                <th scope="col">Ordered by</th>
+                <th scope="col">Project Code</th>
+                <th scope="col">Data entered by</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for reagent in reagents %}
+            <tr>
+                <th scope="row">{{reagent.id}}</th>
+                <td>{{reagent.lab_id}}</td>
+                <th><a href="{% url 'edit_reagent' reagent.id %}"> {{reagent.name}} </a></th>
+                <td>{{reagent.CAT_number}}</td>
+                <td>{{reagent.batch_number}}</td>
+                <td>{{reagent.quantity}}</td>
+                <td>{{reagent.marker}}</td>
+                <td>{{reagent.country}}</td>
+                <td>{{reagent.date_supplied}}</td>
+                <td>{{reagent.manufacturer_date}}</td>
+                <td>{{reagent.expiry_date}}</td>
+                <td>{{reagent.storage_requirement}}</td>
+                <td>{{reagent.location_in_lab}}</td>
+                <td>{{reagent.ordered_by}}</td>
+                <td>{{reagent.project_code}}</td>
+                <td>{{reagent.data_entry_by}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% else %}
+
+    <div class="container">
+        <br>
+        <h3>No Reagent Records</h3>
+        <hr>
+        <h5>
+            Please click the "create new reagent record" button to create
+            a
+            record
+        </h5>
+    </div>
+
+
+
+    {% endif %}
+</div>
+
+{% endblock body %}

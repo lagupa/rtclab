@@ -1,20 +1,37 @@
-{% extends 'base.html' %}
+{% extends 'useraccounts/base.html' %}
 
 
 {% block title %}
-Login
+{{ user.username }} loged in successfully
 {% endblock title %}
 
 
+{% block heading %}
+<h1 class="text-white">Select Databases | RTC LAB INFOBASE</h1>
+{% endblock heading %}
 
 {% block body %}
-<div class="container-fluid pt-5 pb-5 bg-success">
-    <div class="container">
-        <h1> Hello, {{ user.username }}
-        </h1>
-        <p>Currently login as: {{ user.username }} </p>
-        <p><a class="btn btn-primary" href="{% url 'logout' %}">logout</a></p>
+
+<div class="container">
+    <br>
+    <div class="equipment">
+        <a href="{% url 'equipment' %}">
+            <h4>
+                Equipment Database
+            </h4>
+        </a>
     </div>
+    <hr>
+    <div class="reagent">
+        <a href="{% url 'reagent' %}">
+            <h4>
+                Reagent Database
+            </h4>
+        </a>
+    </div>
+    <hr>
+
 </div>
+
 
 {% endblock body %}

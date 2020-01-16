@@ -14,7 +14,7 @@ def user_view(request):
     context = {
         "user": request.user
     }
-    return render(request, "equipment/equipments.html", context)
+    return render(request, "useraccounts/user.html", context)
 
 
 def login_view(request):
